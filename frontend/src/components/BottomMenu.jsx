@@ -20,7 +20,7 @@ const BottomMenu = () => {
   const getCategories = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:3001/users/categories"
+        "http://localhost:3001/categories"
       );
       return response.data;
     } catch (error) {
@@ -32,7 +32,7 @@ const BottomMenu = () => {
     let menuItemsUrl;
 
     const menuItemsUrlLists = {
-      "Search for a mentor": "http://localhost:3001/users/categories",
+      "Search for a mentor": "http://localhost:3001/categories",
       "Assist on mentoring topics": "",
       "Course on mentoring": "",
     };

@@ -78,7 +78,7 @@ app.get("/users/categories", async (req, res) => {
 
 app.get("/categories", async (req, res) => {
   try {
-    const categoriesData = await Category.find({}, "title -_id").exec();
+    const categoriesData = await Category.find({ isParent:true, active:true}, "title -_id").exec();
     const categories = categoriesData.map(
       (category) => category.toObject().title
     );
@@ -93,7 +93,7 @@ app.get("/:category/skills", async (req, res) => {
   const { category } = req.params;
 
   try {
-    const categoryData = await Category.find({ title: category }).exec();
+    const categoryData = await Category.find({ title: category, isParent:true, active:true}).exec();
 
     if (!categoryData.length) {
       return res.status(404).send("Category not found");
